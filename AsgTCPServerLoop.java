@@ -1,7 +1,7 @@
 import java.io.*;
 import java.net.*;
 
-public class AsgTCPServer {
+public class AsgTCPServerLoop {
     public static void main(String[] args) {
         while (true) {
             try {
@@ -16,10 +16,11 @@ public class AsgTCPServer {
                 BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
 
                 // Read data
-                if (in.readLine().equals("hello TCP")) {
-                    // Send response
-                    out.println("back at you TCP");
+                for (int i = 0; i < 1000; i++) {
+                    String data = in.readLine();
                 }
+                // Send response
+                out.println("back at you TCP");
 
                 // Close the streams and socket
                 in.close();

@@ -3,13 +3,14 @@ import time
 
 def main():
     with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as client_socket:
-        server_address = ("localhost", 53333)
+        server_address = ("localhost", 53444)
         message = "hello UDP".encode()
         
         try:
             # Send data to the server
             start_time = time.perf_counter_ns()
-            client_socket.sendto(message, server_address)
+            for i in range(1000):
+                client_socket.sendto(message, server_address)
             data, _ = client_socket.recvfrom(1460)
             end_time = time.perf_counter_ns()
 

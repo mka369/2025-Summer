@@ -2,13 +2,14 @@ import socket
 
 def main():
     with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as server_socket:
-        server_address = ("localhost", 53333)
+        server_address = ("localhost", 53444)
         server_socket.bind(server_address)
 
         while True:
             try:
                 # Read data
-                data, client_address = server_socket.recvfrom(1460)
+                for i in range(1000):
+                    data, client_address = server_socket.recvfrom(1460)
 
                 # Send response
                 response = "back at you UDP".encode()
